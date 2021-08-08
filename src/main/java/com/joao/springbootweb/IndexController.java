@@ -1,18 +1,19 @@
 package com.joao.springbootweb;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class IndexController {
 
 	@RequestMapping("home")
-	public String index(String type, HttpSession session) {
-		System.out.println("Type: " + type);
-		session.setAttribute("type", type);
-		return "index";
+	public ModelAndView index(@RequestParam("name") String type) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("type", type);
+		mv.setViewName("index");
+		return mv;
 	}
 
 }
