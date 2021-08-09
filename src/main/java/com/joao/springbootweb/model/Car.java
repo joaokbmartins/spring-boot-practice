@@ -1,10 +1,12 @@
 package com.joao.springbootweb.model;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-@Component
+@Entity
 public class Car {
 
+	@Id
 	private int id;
 	private String model;
 
