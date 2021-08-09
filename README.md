@@ -1,1 +1,1 @@
-# spring-boot-practice
+# spring-boot-web-persistence
