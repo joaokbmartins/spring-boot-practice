@@ -4,11 +4,21 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+//@Table(name = "cars")
 public class Car {
 
 	@Id
 	private int id;
+	private String brand;
 	private String model;
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
 
 	public int getId() {
 		return id;
