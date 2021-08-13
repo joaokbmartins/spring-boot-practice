@@ -33,4 +33,25 @@ public class CarController {
 		return mv;
 	}
 
+	@RequestMapping("delete")
+	public ModelAndView deletePage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("delete");
+		return mv;
+	}
+
+	@RequestMapping("deleteCar")
+	public ModelAndView deleteCar(Car car) {
+
+		try {
+			this.carRepo.delete(car);
+		} catch (Exception ex) {
+			System.err.println("Error: " + ex);
+		}
+		System.out.println("Deleting: " + car);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("home");
+		return mv;
+	}
+
 }

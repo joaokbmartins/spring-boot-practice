@@ -8,13 +8,16 @@
 </head>
 <body>
 
-	<h1>Add Cars</h1>
+	<h1>Add Cars</h1> 
   <hr>
 	<form action="addCar" method="post">
-		Car id:    <input type="number" name="id" id="id"> <br /> 
-		Car model: <input type="text" name="model" id="model"> <br /> 
+		Id:    <input type="number" name="id" id="id"> <br /> 
+    Model: <input type="text" name="model" id="model"> <br /> 
+    Brand: <input type="text" name="brand" id="brand"> <br /> 
 		<input type="submit">
 	</form>
+	
+	<a href="delete">Delete Cars</a>
 
 </body>
 </html>
