@@ -11,7 +11,7 @@ public interface CarRepository extends CrudRepository<Car, Integer> {
 
 	public List<Car> findByModel(String model);
 
-	@Query("FROM cars WHERE brand = ?1 ORDER BY brand DESC")
+	@Query("FROM Car WHERE brand = ?1 ORDER BY brand DESC")
 	public List<Car> findByBrandDesc(String brand);
 
 }
