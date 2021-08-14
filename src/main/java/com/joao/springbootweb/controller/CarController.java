@@ -1,8 +1,11 @@
 package com.joao.springbootweb.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.joao.springbootweb.model.Car;
@@ -14,16 +17,18 @@ public class CarController {
 	@Autowired
 	CarRepository carRepo;
 
-	@RequestMapping("home")
+	@RequestMapping("/home")
 	public ModelAndView home() {
+		Iterable<Car> cars = this.carRepo.findAll();
 		System.out.println("Home called");
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("carList", cars);
 		mv.setViewName("home");
 		return mv;
 //		return this.home();
 	}
 
-	@RequestMapping("addCar")
+	@RequestMapping("/addCar")
 	public ModelAndView addCar(Car car) {
 		if (car != null && car.getId() > 0) {
 			this.carRepo.save(car);
@@ -33,21 +38,41 @@ public class CarController {
 		return mv;
 	}
 
-	@RequestMapping("delete")
+	@RequestMapping("/update")
+	public ModelAndView update() {
+		ModelAndView mv = new ModelAndView("car-update");
+		return mv;
+	}
+
+	@RequestMapping("/updateCar")
+	public ModelAndView updateCar(Car car) {
+		Car updatedCar = this.carRepo.save(car);
+		ModelAndView mv = new ModelAndView("car-details");
+		mv.addObject("car", updatedCar);
+		return mv;
+	}
+
+	@RequestMapping("/getCar")
+	public ModelAndView getCar(@RequestParam int id) {
+		Optional<Car> car = this.carRepo.findById(id);
+		System.out.println("Car: " + car);
+		System.out.println("CAR: " + car.get());
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("car", car.get());
+		mv.setViewName("car-details");
+		return mv;
+	}
+
+	@RequestMapping("/delete")
 	public ModelAndView deletePage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("delete");
 		return mv;
 	}
 
-	@RequestMapping("deleteCar")
+	@RequestMapping("/deleteCar")
 	public ModelAndView deleteCar(Car car) {
-
-		try {
-			this.carRepo.delete(car);
-		} catch (Exception ex) {
-			System.err.println("Error: " + ex);
-		}
+		this.carRepo.delete(car);
 		System.out.println("Deleting: " + car);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("home");

@@ -1,1 +1,0 @@
-INSERT INTO car (id, model, brand) VALUES(1, "fsdf", "aaa"); 

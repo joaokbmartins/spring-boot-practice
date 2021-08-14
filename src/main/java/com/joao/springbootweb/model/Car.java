@@ -2,8 +2,10 @@ package com.joao.springbootweb.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "cars")
 public class Car {
 
 	@Id
@@ -37,7 +39,7 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "Car [id=" + id + ", model=" + model + "]";
+		return "Car [id=" + id + ", brand=" + brand + ", model=" + model + "]";
 	}
 
 }
