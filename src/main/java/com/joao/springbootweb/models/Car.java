@@ -1,4 +1,4 @@
-package com.joao.springbootweb.model;
+package com.joao.springbootweb.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

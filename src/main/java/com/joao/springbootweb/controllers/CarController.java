@@ -1,5 +1,6 @@
-package com.joao.springbootweb.controller;
+package com.joao.springbootweb.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.joao.springbootweb.model.Car;
-import com.joao.springbootweb.repository.CarRepository;
+import com.joao.springbootweb.models.Car;
+import com.joao.springbootweb.repositories.CarRepository;
 
 @Controller
 public class CarController {
@@ -61,6 +62,20 @@ public class CarController {
 		mv.addObject("car", car.get());
 		mv.setViewName("car-details");
 		return mv;
+	}
+
+	@RequestMapping("/carsByModel")
+	public String getCarsByModel(@RequestParam String model) {
+		List<Car> cars = this.carRepo.findByModel(model);
+		System.out.println("CArs: " + cars);
+		return "home";
+	}
+
+	@RequestMapping("/carsByBrandDesc")
+	public String getCarsByBrnadDesc(@RequestParam String brand) {
+		List<Car> cars = this.carRepo.findByBrandDesc(brand);
+		System.out.println("CARS: " + cars);
+		return "home";
 	}
 
 	@RequestMapping("/delete")

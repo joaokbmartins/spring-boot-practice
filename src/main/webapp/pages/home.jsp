@@ -9,8 +9,8 @@
 <body>
 
 	<h1>Add Car</h1> 
-  <form action="addCar" method="post">
-    Id:    <input type="number" name="id" id="id"> <br /> 
+  <form action="/addCar" method="post">
+    Id: <input type="number" name="id" id="id"> <br /> 
     Model: <input type="text" name="model" id="model"> <br /> 
     Brand: <input type="text" name="brand" id="brand"> <br /> 
     <p>
@@ -19,14 +19,31 @@
   </form>
   
   <hr>
-  <h1>Find Car</h1>
-  <form action="getCar" method="post">
-    Id:    <input type="number" name="id" id="id"> <br /> 
+  <h1>Find Car By Id</h1>
+  <form action="/getCar" method="post">
+    Id: <input type="number" name="id" id="id"> <br /> 
     <p>
       <input type="submit">
     </p>
   </form>
   
+  <hr>
+  <h1>Find Car By Model</h1>
+  <form action="/carsByModel" method="post">
+    Model: <input type="text" name="model" id="model"> <br /> 
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+  
+  <hr>
+  <h1>Find Car By Brand Desc</h1>
+  <form action="/carsByBrandDesc" method="post">
+    Model: <input type="text" name="brand" id="brand"> <br /> 
+    <p>
+      <input type="submit">
+    </p>
+  </form>
   
   <hr>
   <p>
