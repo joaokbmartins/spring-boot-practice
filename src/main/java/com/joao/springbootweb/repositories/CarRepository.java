@@ -7,6 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.joao.springbootweb.models.Car;
 
+/**
+ * 
+ * @Feature: @RepositoryRestResource(collectionResourceRel = "cars", path = "cars")
+ * 				Could be used to skip creation of a basic RestController class.
+ *
+ */
 public interface CarRepository extends JpaRepository<Car, Integer> {
 
 	public List<Car> findByModel(String model);
