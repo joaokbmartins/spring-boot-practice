@@ -2,12 +2,12 @@ package com.joao.springbootweb.repositories;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 
 import com.joao.springbootweb.models.Car;
 
-public interface CarRepository extends CrudRepository<Car, Integer> {
+public interface CarRepository extends JpaRepository<Car, Integer> {
 
 	public List<Car> findByModel(String model);
 
